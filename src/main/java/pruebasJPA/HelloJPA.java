@@ -1,4 +1,4 @@
-package probandoJPA;
+package pruebasJPA;
 
 import java.util.HashMap;
 import java.util.Map;
