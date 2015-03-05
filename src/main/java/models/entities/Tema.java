@@ -1,12 +1,15 @@
 package models.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class tema {
+public class Tema {
 
 	@Id
 	@GeneratedValue
@@ -16,10 +19,10 @@ public class tema {
 	
 	private String pregunta;
 	
-	@OneToMany
-	private Voto[] votos;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Voto> votos;
 
-	public tema() {		
+	public Tema() {		
 	}
 
 	public Integer getId() {
@@ -46,11 +49,11 @@ public class tema {
 		this.pregunta = pregunta;
 	}
 
-	public Voto[] getVotos() {
+	public List<Voto> getVotos() {
 		return votos;
 	}
 
-	public void setVotos(Voto[] votos) {
+	public void setVotos(List<Voto> votos) {
 		this.votos = votos;
 	}
 	
