@@ -25,12 +25,12 @@ public class DaoJpaFactory extends DaoFactory {
     }
 
 	@Override
-	public TemaDao getUserDao() {
-		return null;
+	public TemaDao getTemaDao() {
+		return new TemaDaoJpa();
 	}
 
 	@Override
-	public VotoDao getCategoryDao() {
-		return null;
+	public VotoDao getVotoDao() {
+		return new VotoDaoJpa();
 	}
 }

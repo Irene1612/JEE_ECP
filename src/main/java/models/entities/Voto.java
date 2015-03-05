@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import models.utils.NivelEstudios;
+
 @Entity
 public class Voto {
 
@@ -13,7 +15,7 @@ public class Voto {
 	
 	private String usuarioIP;
 	
-	private String nivelEstudios;
+	private NivelEstudios nivelEstudios;
 	
 	private int valoracion;
 
@@ -36,11 +38,11 @@ public class Voto {
 		this.usuarioIP = usuarioIP;
 	}
 
-	public String getNivelEstudios() {
+	public NivelEstudios getNivelEstudios() {
 		return nivelEstudios;
 	}
 
-	public void setNivelEstudios(String nivelEstudios) {
+	public void setNivelEstudios(NivelEstudios nivelEstudios) {
 		this.nivelEstudios = nivelEstudios;
 	}
 

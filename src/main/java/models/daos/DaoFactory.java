@@ -12,8 +12,8 @@ public abstract class DaoFactory {
         return factory;
     }
 
-    public abstract TemaDao getUserDao();
+    public abstract TemaDao getTemaDao();
 
-    public abstract VotoDao getCategoryDao();    
+    public abstract VotoDao getVotoDao();    
 
 }
