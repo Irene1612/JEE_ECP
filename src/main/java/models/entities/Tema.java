@@ -56,7 +56,11 @@ public class Tema {
 	public void setVotos(List<Voto> votos) {
 		this.votos = votos;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Tema [id=" + id + ", nombre=" + nombre + ", pregunta="
+				+ pregunta + ", votos=" + votos + "]";
+	}	
 	
 }

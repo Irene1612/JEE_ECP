@@ -52,5 +52,12 @@ public class Voto {
 
 	public void setValoracion(int valoracion) {
 		this.valoracion = valoracion;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Voto [id=" + id + ", usuarioIP=" + usuarioIP
+				+ ", nivelEstudios=" + nivelEstudios + ", valoracion="
+				+ valoracion + "]";
+	}		
 }
