@@ -14,15 +14,21 @@ public class Tema {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
+
 	private String nombre;
-	
+
 	private String pregunta;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Voto> votos;
 
-	public Tema() {		
+	public Tema() {
+	}
+
+	public Tema(String nombre, String pregunta, List<Voto> votos) {
+		this.nombre = nombre;
+		this.pregunta = pregunta;
+		this.votos = votos;
 	}
 
 	public Integer getId() {
@@ -61,6 +67,6 @@ public class Tema {
 	public String toString() {
 		return "Tema [id=" + id + ", nombre=" + nombre + ", pregunta="
 				+ pregunta + ", votos=" + votos + "]";
-	}	
-	
+	}
+
 }
