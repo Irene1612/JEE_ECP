@@ -13,9 +13,7 @@ import org.junit.Test;
 
 public class TemaDaoJpaTest {
 
-	private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao(); // ¿se puede
-																	// poner
-																	// aqui?
+	private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao(); // ¿se puede poner aqui?
 
 	private Tema tema;
 
