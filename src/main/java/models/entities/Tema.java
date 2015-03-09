@@ -25,8 +25,7 @@ public class Tema {
 	public Tema() {
 	}
 
-	public Tema(Integer id, String nombre, String pregunta, List<Voto> votos) {
-		this.id = id;
+	public Tema(String nombre, String pregunta, List<Voto> votos) {
 		this.nombre = nombre;
 		this.pregunta = pregunta;
 		this.votos = votos;

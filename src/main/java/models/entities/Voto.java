@@ -22,9 +22,8 @@ public class Voto {
 	public Voto() {
 	}
 
-	public Voto(Integer id, String usuarioIP, NivelEstudios nivelEstudios,
-			int valoracion) {
-		this.id = id;
+	public Voto(String usuarioIP, NivelEstudios nivelEstudios,
+			int valoracion) {		
 		this.usuarioIP = usuarioIP;
 		this.nivelEstudios = nivelEstudios;
 		this.valoracion = valoracion;
