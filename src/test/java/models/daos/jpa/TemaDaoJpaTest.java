@@ -3,6 +3,7 @@ package models.daos.jpa;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import models.daos.DaoFactory;
 import models.daos.TemaDao;
@@ -19,6 +20,8 @@ public class TemaDaoJpaTest {
 	private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao(); //¿se puede poner aqui?
 
 	private Tema tema;
+	
+	private List<Voto> votos;
 
 	@BeforeClass
 	public static void beforeClass(){
@@ -28,13 +31,15 @@ public class TemaDaoJpaTest {
 	
 	@Before
 	public void init() {
-		tema = new Tema("tema1", "¿Te gusta el tema 1?", new ArrayList<Voto>());
+		votos = new ArrayList<Voto>();
+		tema = new Tema(0, "tema1", "¿Te gusta el tema 1?", votos);
 	}
 
 	@Test
 	public void testCreate() {
-		Tema tema = new Tema("tema2", "¿Te gusta el tema 2?",
-				new ArrayList<Voto>());
+		List<Voto> votos = new ArrayList<Voto>();
+		Tema tema = new Tema(1, "tema2", "¿Te gusta el tema 2?",
+				votos);
 		dao.create(tema);
 		assertEquals(tema, dao.read(1));
 	}
