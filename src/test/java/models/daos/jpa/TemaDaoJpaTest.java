@@ -2,13 +2,9 @@ package models.daos.jpa;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import models.daos.DaoFactory;
 import models.daos.TemaDao;
 import models.entities.Tema;
-import models.entities.Voto;
 
 import org.junit.After;
 import org.junit.Before;
@@ -20,8 +16,6 @@ public class TemaDaoJpaTest {
 	private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao(); //¿se puede poner aqui?
 
 	private Tema tema;
-	
-	private List<Voto> votos;
 
 	@BeforeClass
 	public static void beforeClass(){
@@ -31,22 +25,19 @@ public class TemaDaoJpaTest {
 	
 	@Before
 	public void init() {
-		votos = new ArrayList<Voto>();
-		tema = new Tema(0, "tema1", "¿Te gusta el tema 1?", votos);
+		tema = new Tema("tema1", "¿Te gusta el tema 1?");
 	}
 
 	@Test
 	public void testCreate() {
-		List<Voto> votos = new ArrayList<Voto>();
-		Tema tema = new Tema(1, "tema2", "¿Te gusta el tema 2?",
-				votos);
+		Tema tema = new Tema("tema2", "¿Te gusta el tema 2?");
 		dao.create(tema);
-		assertEquals(tema, dao.read(1));
+		assertEquals(tema, dao.read(2));
 	}
 
 	@Test
 	public void testRead() {
-		assertEquals(tema, dao.read(0));
+		assertEquals(tema, dao.read(1));
 	}
 
 	@Test
@@ -56,8 +47,8 @@ public class TemaDaoJpaTest {
 
 	@Test
 	public void testDeleteById() {
-		dao.deleteById(0);
-		assertNull(dao.read(0));
+		dao.deleteById(1);
+		assertNull(dao.read(1));
 	}
 
 	@Test

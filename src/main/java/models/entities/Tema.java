@@ -25,10 +25,9 @@ public class Tema {
 	public Tema() {
 	}
 
-	public Tema(String nombre, String pregunta, List<Voto> votos) {
+	public Tema(String nombre, String pregunta) {
 		this.nombre = nombre;
 		this.pregunta = pregunta;
-		this.votos = votos;
 	}
 
 	public Integer getId() {
@@ -72,23 +71,9 @@ public class Tema {
 	public boolean equals(Tema tema) {
 		boolean iguales = false;
 		if (this.id == tema.id && this.nombre == tema.nombre
-				&& this.pregunta == tema.pregunta && this.votosIguales(tema)) {
+				&& this.pregunta == tema.pregunta) {
 			iguales = true;
 		}
 		return iguales;
 	}
-
-	private boolean votosIguales(Tema tema) {
-		boolean votosIguales = true;
-		if (this.votos.size() == tema.votos.size()) {
-			for (int i = 0; i < this.votos.size(); i++) {
-				if (!this.votos.get(i).equals(tema.votos.get(i)))
-					votosIguales = false;
-			}
-		} else {
-			votosIguales = false;
-		}
-		return votosIguales;
-	}
-
 }
