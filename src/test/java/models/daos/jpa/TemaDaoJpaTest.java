@@ -28,12 +28,12 @@ public class TemaDaoJpaTest {
 		Tema tema = new Tema("tema2", "¿Te gusta el tema 2?",
 				new ArrayList<Voto>());
 		dao.create(tema);
-		assertEquals(dao.read(1), tema);
+		assertEquals(tema, dao.read(1));
 	}
 
 	@Test
 	public void testRead() {
-		fail("Not yet implemented");
+		assertEquals(tema, dao.read(0));
 	}
 
 	@Test
@@ -43,12 +43,13 @@ public class TemaDaoJpaTest {
 
 	@Test
 	public void testDeleteById() {
-		fail("Not yet implemented");
+		dao.deleteById(1);
+		assertNull(dao.read(1));
 	}
 
 	@Test
 	public void testFindAll() {
-		fail("Not yet implemented");
+		assertEquals(1, dao.findAll().size());
 	}
 
 }
