@@ -22,6 +22,14 @@ public class Voto {
 	public Voto() {
 	}
 
+	public Voto(Integer id, String usuarioIP, NivelEstudios nivelEstudios,
+			int valoracion) {
+		this.id = id;
+		this.usuarioIP = usuarioIP;
+		this.nivelEstudios = nivelEstudios;
+		this.valoracion = valoracion;
+	}
+
 	public Integer getId() {
 		return id;
 	}
