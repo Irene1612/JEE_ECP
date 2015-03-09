@@ -12,11 +12,11 @@ public class Voto {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
+
 	private String usuarioIP;
-	
+
 	private NivelEstudios nivelEstudios;
-	
+
 	private int valoracion;
 
 	public Voto() {
@@ -59,5 +59,15 @@ public class Voto {
 		return "Voto [id=" + id + ", usuarioIP=" + usuarioIP
 				+ ", nivelEstudios=" + nivelEstudios + ", valoracion="
 				+ valoracion + "]";
-	}		
+	}
+
+	public boolean equals(Voto voto) {
+		boolean iguales = false;
+		if (this.id == voto.id && this.nivelEstudios == voto.nivelEstudios
+				&& this.usuarioIP == voto.usuarioIP
+				&& this.valoracion == voto.valoracion)
+			iguales = true;
+		return iguales;
+	}
+
 }
