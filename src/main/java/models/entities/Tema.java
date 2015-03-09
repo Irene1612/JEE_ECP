@@ -15,8 +15,10 @@ public class Tema {
 	@GeneratedValue
 	private Integer id;
 
+	public static final String NOMBRE = "NOMBRE";
 	private String nombre;
 
+	public static final String PREGUNTA = "PREGUNTA";
 	private String pregunta;
 
 	@OneToMany(cascade = CascadeType.ALL)
