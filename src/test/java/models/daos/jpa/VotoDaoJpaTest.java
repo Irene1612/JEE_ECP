@@ -2,22 +2,23 @@ package models.daos.jpa;
 
 import static org.junit.Assert.*;
 
-import models.daos.DaoFactory;
-import models.daos.TemaDao;
-import models.entities.Tema;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TemaDaoJpaTest {
+import models.daos.DaoFactory;
+import models.daos.VotoDao;
+import models.entities.Voto;
+import models.utils.NivelEstudios;
 
-	private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao(); // ¿se puede
+public class VotoDaoJpaTest {
+
+	private VotoDao dao = DaoJpaFactory.getFactory().getVotoDao(); // ¿se puede
 																	// poner
 																	// aqui?
 
-	private Tema tema;
+	private Voto voto;
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -27,20 +28,20 @@ public class TemaDaoJpaTest {
 
 	@Before
 	public void init() {
-		tema = new Tema("tema1", "¿Te gusta el tema 1?");
-		dao.create(tema);
+		voto = new Voto("128.0.0.0", NivelEstudios.SIN_ESTUDIOS, 5);
+		dao.create(voto);
 	}
 
 	@Test
 	public void testCreate() {
-		Tema tema = new Tema("tema2", "¿Te gusta el tema 2?");
-		dao.create(tema);
-		assertEquals(tema, dao.read(2));
+		Voto voto = new Voto("13.62.0.0", NivelEstudios.ESO, 3);
+		dao.create(voto);
+		assertEquals(voto, dao.read(2));
 	}
 
 	@Test
-	public void testRead() {
-		assertEquals(tema, dao.read(1));
+	public void testRead() {		
+		assertEquals(voto, dao.read(1));
 	}
 
 	@Test
@@ -61,9 +62,6 @@ public class TemaDaoJpaTest {
 
 	@After
 	public void after() {
-		for (int i = 0; i < dao.findAll().size(); i++) {
-			dao.deleteById(i);
-		}
+		DaoJpaFactory.prepareFactoryWithDropAndCreateTables();
 	}
-
 }
