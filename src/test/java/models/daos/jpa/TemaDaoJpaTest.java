@@ -1,9 +1,14 @@
 package models.daos.jpa;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import models.daos.DaoFactory;
 import models.daos.TemaDao;
 import models.entities.Tema;
+import models.entities.Voto;
+import models.utils.NivelEstudios;
 
 import org.junit.After;
 import org.junit.Before;
@@ -25,7 +30,7 @@ public class TemaDaoJpaTest {
 	@Before
 	public void init() {
 		dao = DaoJpaFactory.getFactory().getTemaDao();
-		tema = new Tema("tema1", "¿Te gusta el tema 1?");	
+		tema = new Tema("tema1", "¿Te gusta el tema 1?", new ArrayList<Voto>());	
 		dao.create(tema);
 	}
 
@@ -36,7 +41,10 @@ public class TemaDaoJpaTest {
 
 	@Test
 	public void testUpdate() {
-		fail("Not yet implemented");
+		Voto voto = new Voto(1, "13.0.0.0", NivelEstudios.BACHILLERATO_FP,3);		
+		tema.putVoto(voto);
+		dao.update(tema);
+		assertEquals(tema, dao.read(tema.getId()));
 	}
 
 	@Test
@@ -47,7 +55,7 @@ public class TemaDaoJpaTest {
 
 	@Test
 	public void testFindAll() {
-		assertEquals(1, dao.findAll().size());
+		assertTrue(dao.findAll().size() == 1);
 	}
 
 	@After
