@@ -8,15 +8,22 @@ import models.utils.NivelEstudios;
 
 @Entity
 public class Voto {
+	
+	public static final String TABLE = "voto";
+
+    public static final String ID = "ID";
 
 	@Id
 	@GeneratedValue
 	private Integer id;
 
+	public static final String USUARIO_IP = "USUARIOIP";
 	private String usuarioIP;
 
+	public static final String NIVEL_ESTUDIOS = "NIVELESTUDIOS";
 	private NivelEstudios nivelEstudios;
 
+	public static final String VALORACION = "VALORACION";
 	private int valoracion;
 
 	public Voto() {
@@ -27,6 +34,12 @@ public class Voto {
 		this.usuarioIP = usuarioIP;
 		this.nivelEstudios = nivelEstudios;
 		this.valoracion = valoracion;
+	}	
+
+	public Voto(Integer id, String usuarioIP, NivelEstudios nivelEstudios,
+			int valoracion) {
+		this(usuarioIP, nivelEstudios, valoracion);
+		this.id = id;
 	}
 
 	public Integer getId() {
@@ -67,14 +80,12 @@ public class Voto {
 				+ ", nivelEstudios=" + nivelEstudios + ", valoracion="
 				+ valoracion + "]";
 	}
-
-	public boolean equals(Voto voto) {
-		boolean iguales = false;
-		if (this.id == voto.id && this.nivelEstudios.equals(voto.nivelEstudios)
+	
+	@Override
+	public boolean equals(Object obj) {
+		Voto voto = (Voto) obj;
+		return this.id == voto.id && this.nivelEstudios.equals(voto.nivelEstudios)
 				&& this.usuarioIP.equals(voto.usuarioIP)
-				&& this.valoracion == voto.valoracion)
-			iguales = true;
-		return iguales;
+				&& this.valoracion == voto.valoracion;
 	}
-
 }

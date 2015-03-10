@@ -38,7 +38,9 @@ public class VotoDaoJpaTest {
 
 	@Test
 	public void testUpdate() {
-		fail("Not yet implemented");
+		voto.setNivelEstudios(NivelEstudios.UNIVERSITARIO);
+		dao.update(voto);
+		assertTrue(voto.equals(dao.read(voto.getId())));
 	}
 
 	@Test
@@ -49,7 +51,7 @@ public class VotoDaoJpaTest {
 
 	@Test
 	public void testFindAll() {
-		assertEquals(1, dao.findAll().size());
+		assertTrue(dao.findAll().size() == 1);
 	}
 	
 	@After
