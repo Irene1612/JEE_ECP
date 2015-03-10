@@ -76,8 +76,8 @@ public class Tema {
 
 	public boolean equals(Tema tema) {
 		boolean iguales = false;
-		if (this.id == tema.id && this.nombre == tema.nombre
-				&& this.pregunta == tema.pregunta) {
+		if (this.id.equals(tema.id) && this.nombre.equals(tema.nombre)
+				&& this.pregunta.equals(tema.pregunta)) {
 			iguales = true;
 		}
 		return iguales;

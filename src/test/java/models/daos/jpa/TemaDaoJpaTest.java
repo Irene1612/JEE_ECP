@@ -1,7 +1,6 @@
 package models.daos.jpa;
 
 import static org.junit.Assert.*;
-
 import models.daos.DaoFactory;
 import models.daos.TemaDao;
 import models.entities.Tema;
@@ -13,32 +12,26 @@ import org.junit.Test;
 
 public class TemaDaoJpaTest {
 
-	private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao(); // ¿se puede poner aqui?
+	private TemaDao dao;
 
 	private Tema tema;
 
 	@BeforeClass
 	public static void beforeClass() {
 		DaoFactory.setFactory(new DaoJpaFactory());
-		DaoJpaFactory.prepareFactoryWithDropAndCreateTables();
+		DaoJpaFactory.dropAndCreateTables();
 	}
 
 	@Before
 	public void init() {
-		tema = new Tema("tema1", "¿Te gusta el tema 1?");
+		dao = DaoJpaFactory.getFactory().getTemaDao();
+		tema = new Tema("tema1", "¿Te gusta el tema 1?");	
 		dao.create(tema);
 	}
 
 	@Test
-	public void testCreate() {
-		Tema tema = new Tema("tema2", "¿Te gusta el tema 2?");
-		dao.create(tema);
-		assertEquals(tema, dao.read(2));
-	}
-
-	@Test
-	public void testRead() {
-		assertEquals(tema, dao.read(1));
+	public void testCreateRead() {
+		assertTrue(tema.equals(dao.read(tema.getId())));
 	}
 
 	@Test
@@ -48,8 +41,8 @@ public class TemaDaoJpaTest {
 
 	@Test
 	public void testDeleteById() {
-		dao.deleteById(1);
-		assertNull(dao.read(1));
+		dao.deleteById(tema.getId());
+		assertNull(dao.read(tema.getId()));
 	}
 
 	@Test
@@ -59,9 +52,6 @@ public class TemaDaoJpaTest {
 
 	@After
 	public void after() {
-		for (int i = 0; i < dao.findAll().size(); i++) {
-			dao.deleteById(i);
-		}
+		dao.deleteById(tema.getId());		
 	}
-
 }
