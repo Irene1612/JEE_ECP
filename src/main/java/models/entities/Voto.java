@@ -70,8 +70,8 @@ public class Voto {
 
 	public boolean equals(Voto voto) {
 		boolean iguales = false;
-		if (this.id == voto.id && this.nivelEstudios == voto.nivelEstudios
-				&& this.usuarioIP == voto.usuarioIP
+		if (this.id == voto.id && this.nivelEstudios.equals(voto.nivelEstudios)
+				&& this.usuarioIP.equals(voto.usuarioIP)
 				&& this.valoracion == voto.valoracion)
 			iguales = true;
 		return iguales;

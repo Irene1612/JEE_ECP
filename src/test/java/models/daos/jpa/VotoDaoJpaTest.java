@@ -14,34 +14,26 @@ import models.utils.NivelEstudios;
 
 public class VotoDaoJpaTest {
 
-	private VotoDao dao = DaoJpaFactory.getFactory().getVotoDao(); // ¿se puede
-																	// poner
-																	// aqui?
+	private VotoDao dao; 
 
 	private Voto voto;
 
 	@BeforeClass
 	public static void beforeClass() {
 		DaoFactory.setFactory(new DaoJpaFactory());
-		DaoJpaFactory.prepareFactoryWithDropAndCreateTables();
+		DaoJpaFactory.dropAndCreateTables();
 	}
 
 	@Before
 	public void init() {
+		dao = DaoJpaFactory.getFactory().getVotoDao();
 		voto = new Voto("128.0.0.0", NivelEstudios.SIN_ESTUDIOS, 5);
 		dao.create(voto);
 	}
 
 	@Test
-	public void testCreate() {
-		Voto voto = new Voto("13.62.0.0", NivelEstudios.ESO, 3);
-		dao.create(voto);
-		assertEquals(voto, dao.read(2));
-	}
-
-	@Test
-	public void testRead() {		
-		assertEquals(voto, dao.read(1));
+	public void testCreateRead() {
+		assertTrue(voto.equals(dao.read(voto.getId())));
 	}
 
 	@Test
@@ -51,17 +43,17 @@ public class VotoDaoJpaTest {
 
 	@Test
 	public void testDeleteById() {
-		dao.deleteById(1);
-		assertNull(dao.read(1));
+		dao.deleteById(voto.getId());
+		assertNull(dao.read(voto.getId()));
 	}
 
 	@Test
 	public void testFindAll() {
 		assertEquals(1, dao.findAll().size());
 	}
-
+	
 	@After
-	public void after() {
-		DaoJpaFactory.prepareFactoryWithDropAndCreateTables();
+	public void after(){
+		dao.deleteById(voto.getId());
 	}
 }
