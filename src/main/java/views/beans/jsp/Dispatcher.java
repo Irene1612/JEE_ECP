@@ -10,14 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 
+import controllers.ControllerFactory;
+import controllersEjb.ControllerEjbFactory;
+
 
 @WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private static String PATH_ROOT_VIEW = "/viewsJsp/";
-
+    private static String PATH_ROOT_VIEW = "/viewsJsp/"; 
+    
+    private ControllerFactory controllerFactory;
+    
     @Override
+	public void init() throws ServletException {
+		super.init();
+		controllerFactory = new ControllerEjbFactory();
+	}
+
+	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
@@ -25,9 +36,18 @@ public class Dispatcher extends HttpServlet {
         LogManager.getLogger(Dispatcher.class).debug("accion: " + action);
         String view;
         switch (action) {  
-//        	case "persona":
-//        		view = "";
-//        		break;
+        	case "verTemas":
+        		VerTemasView verTemaView = new VerTemasView();
+        		verTemaView.setControllerFactory(controllerFactory);
+        		request.setAttribute(action + "View", verTemaView);
+        		view = action;
+        		break;
+        	case "eliminarTema":
+        		view = action;
+        		break;
+        	case "aniadirTema":
+        		view = action;
+        		break;	
 	        default:
 	            view = "home";
         }

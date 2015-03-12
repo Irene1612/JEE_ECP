@@ -9,13 +9,13 @@
 <body>
 	<h1>VotacionesApp</h1>
 	<p>
-		<a href="#">Ver temas</a>
+		<a href="/VotacionesApp/jsp/verTemas">Ver temas</a>
 	</p>
 	<p>
-		<a href="#">Eliminar tema</a>
+		<a href="/VotacionesApp/jsp/eliminarTema">Eliminar tema</a>
 	</p>
 	<p>
-		<a href="#">Añadir tema</a>
+		<a href="/VotacionesApp/jsp/aniadirTema">Añadir tema</a>
 	</p>
 </body>
 </html>
