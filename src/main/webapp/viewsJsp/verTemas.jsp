@@ -10,12 +10,20 @@
 <body>
 	<h1>Temas</h1>
 	<c:set var="verTemasView" scope="request" value="${verTemasView}" />
+	<div>${verTemasView.update()}</div>
 	<form action="/VotacionesApp/jsp/verTemas" method="post">
-		<select name="tema">
-				<c:forEach var="tema" items="${verTemasView.temas}">
-					<option value="tema${tema.id}">${tema.nombre}</option>
-				</c:forEach>
-		</select>
+		<c:choose>
+			<c:when test="${verTemasView.hayTemas==false}">
+				<p>${verTemasView.errorMsg}</p>
+			</c:when>
+			<c:otherwise>
+				<select name="tema">
+					<c:forEach var="tema" items="${verTemasView.temas}">
+						<option value="${tema.id}">${tema.nombre}</option>
+					</c:forEach>
+				</select>
+			</c:otherwise>
+		</c:choose>		
 	</form>
 </body>
 </html>
