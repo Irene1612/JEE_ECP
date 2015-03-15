@@ -70,11 +70,18 @@ public class Dispatcher extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getPathInfo().substring(1);
+		Tema tema = new Tema();
 		String view;
 		switch (action) {
+			case "eliminarTema":
+				EliminarTemaView eliminarTemaView = new EliminarTemaView();
+				eliminarTemaView.setControllerFactory(controllerFactory);				
+	            request.setAttribute(action, eliminarTemaView);
+				view = eliminarTemaView.eliminarTema();
+				break;
 			case "aniadirTema":
 				AniadirTemaView aniadirTemaView = new AniadirTemaView();
-				Tema tema = new Tema();
+				aniadirTemaView.setControllerFactory(controllerFactory);
 				tema.setNombre(request.getParameter("nombreTema"));
 				tema.setPregunta(request.getParameter("preguntaTema"));
 	            request.setAttribute(action, aniadirTemaView);
