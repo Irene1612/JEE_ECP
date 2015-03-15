@@ -1,5 +1,7 @@
 package controllers;
 
-public interface AniadirTemaController {
+import models.entities.Tema;
 
+public interface AniadirTemaController {	
+	public void crearTema(Tema tema);
 }
