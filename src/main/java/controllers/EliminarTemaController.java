@@ -1,5 +1,13 @@
 package controllers;
 
+import java.util.List;
+
+import models.entities.Tema;
+
 public interface EliminarTemaController {
-	public void eliminarTema(Integer id);
+	void eliminarTema(Integer id);
+
+	List<Tema> getTemas();
+
+	boolean hayTemas();
 }
