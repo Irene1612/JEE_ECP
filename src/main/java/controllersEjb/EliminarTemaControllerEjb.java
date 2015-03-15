@@ -1,27 +1,12 @@
 package controllersEjb;
 
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 
 import models.daos.TemaDao;
 import models.daos.jpa.DaoJpaFactory;
-import models.entities.Tema;
 import controllers.EliminarTemaController;
 
-public class EliminarTemaControllerEjb implements EliminarTemaController {
-
-	@Override
-	public List<Tema> getTemas() {	
-		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
-		return temaDao.findAll();
-	}
-
-	@Override
-	public boolean hayTemas() {		
-		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
-		return !temaDao.findAll().isEmpty();
-	}
+public class EliminarTemaControllerEjb extends TemaControllerEjb implements EliminarTemaController {
 	
 	@Override
 	public void eliminarTema(Integer id) {

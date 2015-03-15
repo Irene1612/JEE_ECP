@@ -1,13 +1,5 @@
 package controllers;
 
-import java.util.List;
-
-import models.entities.Tema;
-
-public interface EliminarTemaController {
+public interface EliminarTemaController extends TemaController{
 	void eliminarTema(Integer id);
-
-	List<Tema> getTemas();
-
-	boolean hayTemas();
 }
