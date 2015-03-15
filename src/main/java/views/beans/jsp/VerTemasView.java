@@ -7,7 +7,6 @@ import models.entities.Tema;
 
 import org.apache.logging.log4j.LogManager;
 
-import controllers.ControllerFactory;
 import controllers.VerVotacionesController;
 
 public class VerTemasView extends ViewBean{
@@ -30,6 +29,10 @@ public class VerTemasView extends ViewBean{
 		return errorMsg;
 	}
 	
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+
 	public boolean isHayTemas() {
 		return hayTemas;
 	}
@@ -42,13 +45,14 @@ public class VerTemasView extends ViewBean{
 		VerVotacionesController verVotacionesController = this.getControllerFactory().getVerVotacionesController();
 		this.temas = new ArrayList<Tema>();
 		LogManager.getLogger(VerTemasView.class).debug("Se accede a la capa de negocio para recuperar temas");
-		LogManager.getLogger(VerTemasView.class).debug("Probando: " + verVotacionesController);		
+		LogManager.getLogger(VerTemasView.class).debug("¿Hay temas?: " + verVotacionesController.hayTemas());		
 		if (verVotacionesController.hayTemas()) {
 			LogManager.getLogger(VerTemasView.class).debug("Entro en el if porque hay temas en la bbdd");
 			this.setHayTemas(true);
 			this.setTemas(verVotacionesController.getTemas());
 		} else {
 			this.setHayTemas(false);
+			this.setErrorMsg("No hay ningún tema para elegir!!!!!");
 		}
 	}
 

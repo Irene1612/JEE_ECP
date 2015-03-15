@@ -18,13 +18,16 @@
 			</c:when>
 			<c:otherwise>
 				<select name="tema">
-<%-- 					<c:forEach var="tema" items="${verTemasView.temas}"> --%>
-<%-- 						<option value="${tema.id}">${tema.nombre}</option> --%>
-<%-- 					</c:forEach> --%>
+					<c:forEach var="tema" items="${verTemasView.temas}">
+						<option value="${tema.id}">${tema.nombre}</option>
+					</c:forEach>
 				</select>
-			</c:otherwise>
-		</c:choose>	
-		<input type="submit" value="Ver detalles" />	
+				<input type="submit" value="Ver detalles" />
+			</c:otherwise>			
+		</c:choose>				
+	</form>
+	<form action="/VotacionesApp/jsp/home">
+    	<input type="submit" value="Atrás">
 	</form>
 </body>
 </html>
