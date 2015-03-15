@@ -23,7 +23,8 @@
 <%-- 					</c:forEach> --%>
 				</select>
 			</c:otherwise>
-		</c:choose>		
+		</c:choose>	
+		<input type="submit" value="Ver detalles" />	
 	</form>
 </body>
 </html>
