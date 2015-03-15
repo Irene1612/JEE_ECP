@@ -1,5 +1,6 @@
 package views.beans.jsp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import models.entities.Tema;
@@ -7,6 +8,8 @@ import models.entities.Tema;
 import org.apache.logging.log4j.LogManager;
 
 import controllers.ControllerFactory;
+import controllersEjb.ControllerEjbFactory;
+import controllersEjb.VerVotacionesControllerEjb;
 
 public class VerTemasView {
 
@@ -17,9 +20,6 @@ public class VerTemasView {
 	private String errorMsg;
 
 	private ControllerFactory controllerFactory;
-
-	public VerTemasView() {
-	}
 
 	public List<Tema> getTemas() {
 		return temas;
@@ -32,17 +32,28 @@ public class VerTemasView {
 	public String getErrorMsg() {
 		return errorMsg;
 	}
+	
+	public boolean isHayTemas() {
+		return hayTemas;
+	}
+
+	public void setHayTemas(boolean hayTemas) {
+		this.hayTemas = hayTemas;
+	}
 
 	public void update() {
-		LogManager.getLogger(VerTemasView.class).debug(
-				"Se accede a la capa de negocio para recuperar temas");
+		//VerVotacionesControllerEjb verVotacionesControllerEjb = this.getControllerFactory().getVerVotacionesController();
+		this.temas = new ArrayList<Tema>();
+		
+		//this.setControllerFactory(new ControllerEjbFactory());
+		LogManager.getLogger(VerTemasView.class).debug("Se accede a la capa de negocio para recuperar temas");
+		LogManager.getLogger(VerTemasView.class).debug("Probando: " + controllerFactory);		
 		if (controllerFactory.getVerVotacionesController().hayTemas()) {
-			LogManager.getLogger(VerTemasView.class).debug(
-					"Entro en el if porque hay temas en la bbdd");
-			this.temas = controllerFactory.getVerVotacionesController()
-					.getTemas();
+			LogManager.getLogger(VerTemasView.class).debug("Entro en el if porque hay temas en la bbdd");
+			this.setHayTemas(true);
+			this.setTemas(controllerFactory.getVerVotacionesController().getTemas());
 		} else {
-			this.hayTemas = false;
+			this.setHayTemas(false);
 		}
 	}
 
@@ -57,8 +68,16 @@ public class VerTemasView {
 	// }
 	// }
 
-	public void setControllerFactory(ControllerFactory controllerFactory) {
-		controllerFactory = this.controllerFactory;
+//	public void setControllerFactory(ControllerFactory controllerFactory) {
+//		controllerFactory = this.controllerFactory;
+//	}
+	
+	
+	private ControllerFactory getControllerFactory() {
+        return controllerFactory;
+    }
 
+	public void setControllerFactory(ControllerFactory controllerFactory) {
+		this.controllerFactory = controllerFactory;
 	}
 }

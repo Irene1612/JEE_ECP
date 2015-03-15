@@ -18,9 +18,9 @@
 			</c:when>
 			<c:otherwise>
 				<select name="tema">
-					<c:forEach var="tema" items="${verTemasView.temas}">
-						<option value="${tema.id}">${tema.nombre}</option>
-					</c:forEach>
+<%-- 					<c:forEach var="tema" items="${verTemasView.temas}"> --%>
+<%-- 						<option value="${tema.id}">${tema.nombre}</option> --%>
+<%-- 					</c:forEach> --%>
 				</select>
 			</c:otherwise>
 		</c:choose>		
