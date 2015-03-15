@@ -75,9 +75,10 @@ public class Dispatcher extends HttpServlet {
 		switch (action) {
 			case "eliminarTema":
 				EliminarTemaView eliminarTemaView = new EliminarTemaView();
-				eliminarTemaView.setControllerFactory(controllerFactory);				
+				eliminarTemaView.setControllerFactory(controllerFactory);
+				Integer id = Integer.valueOf(request.getParameter("id"));
 	            request.setAttribute(action, eliminarTemaView);
-				view = eliminarTemaView.eliminarTema();
+				view = eliminarTemaView.eliminarTema(id);
 				break;
 			case "aniadirTema":
 				AniadirTemaView aniadirTemaView = new AniadirTemaView();
