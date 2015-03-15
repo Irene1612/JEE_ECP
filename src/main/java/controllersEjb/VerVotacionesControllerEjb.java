@@ -2,22 +2,23 @@ package controllersEjb;
 
 import java.util.List;
 
-import models.daos.jpa.TemaDaoJpa;
+import models.daos.TemaDao;
+import models.daos.jpa.DaoJpaFactory;
 import models.entities.Tema;
 import controllers.VerVotacionesController;
 
 public class VerVotacionesControllerEjb implements VerVotacionesController {
 	
-	private TemaDaoJpa tema;
-	
 	@Override
-	public List<Tema> getTemas() {		
-		return tema.findAll();
+	public List<Tema> getTemas() {	
+		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
+		return temaDao.findAll();
 	}
 
 	@Override
 	public boolean hayTemas() {		
-		return !tema.findAll().isEmpty();
+		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
+		return !temaDao.findAll().isEmpty();
 	}
 
 }
