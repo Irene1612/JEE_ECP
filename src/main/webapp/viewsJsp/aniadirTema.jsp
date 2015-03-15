@@ -12,6 +12,9 @@
 	<c:set var="verTemasView" scope="request" value="${aniadirTemaView}" />
 <%-- 	<div>${aniadirTema.update()}</div> --%>
 	<form action="/VotacionesApp/jsp/aniadirTema" method="post">
+		Nombre: <input type="text" name="nombreTema"><br>
+		Pregunta: <input type="text" name="preguntaTema"><br>
+		<input type="submit" value="Añadir">
 	</form>
 </body>
 </html>
