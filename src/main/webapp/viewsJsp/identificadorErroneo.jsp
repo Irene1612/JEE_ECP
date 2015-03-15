@@ -4,18 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>VotacionesApp</title>
+<title>Identificador Erroneo</title>
 </head>
 <body>
-	<h1>VotacionesApp</h1>
+	<h1>Identificador Erroneo</h1>
 	<p>
-		<a href="/VotacionesApp/jsp/verTemas">Ver temas</a>
+		El codigo de autorización no es correcto.
 	</p>
 	<p>
-		<a href="/VotacionesApp/jsp/introducirIdentificador">Eliminar tema</a>
-	</p>
-	<p>
-		<a href="/VotacionesApp/jsp/aniadirTema">Añadir tema</a>
+		<a href="/VotacionesApp/jsp/introducirIdentificador">Atrás</a>
 	</p>
 </body>
 </html>

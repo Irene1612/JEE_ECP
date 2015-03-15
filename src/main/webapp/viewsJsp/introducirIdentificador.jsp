@@ -5,15 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Añadir Tema</title>
+<title>Validación de identificador</title>
 </head>
 <body>
-	<h1>Añadir Tema</h1>
-	<c:set var="verTemasView" scope="request" value="${aniadirTemaView}" />
-	<form action="/VotacionesApp/jsp/aniadirTema" method="post">
-		Nombre: <input type="text" name="nombreTema"><br>
-		Pregunta: <input type="text" name="preguntaTema"><br>
-		<input type="submit" value="Añadir">
+	<h1>Eliminar Tema</h1>
+	<c:set var="introducirIdentificadorView" scope="request" value="${introducirIdentificadorView}" />
+	<form action="/VotacionesApp/jsp/introducirIdentificador" method="post">
+		Introduzca código de autorización: <input type="text" name="codigoAutorizacion"><br>
+		<input type="submit" value="Enviar">
 	</form>
 	<form action="/VotacionesApp/jsp/home">
     	<input type="submit" value="Atrás">

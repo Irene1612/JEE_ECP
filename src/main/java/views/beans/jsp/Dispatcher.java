@@ -44,12 +44,12 @@ public class Dispatcher extends HttpServlet {
 			request.setAttribute(action + "View", verTemaView);
 			view = action;
 			break;
-		case "eliminarTema":
-			EliminarTemaView eliminarTemaView = new EliminarTemaView();
-			eliminarTemaView.setControllerFactory(controllerFactory);
-			request.setAttribute(action + "View", eliminarTemaView);
+		case "introducirIdentificador":
+			IntroducirIdentificadorView introducirIdentificadorView = new IntroducirIdentificadorView();
+			introducirIdentificadorView.setControllerFactory(controllerFactory);
+			request.setAttribute(action + "View", introducirIdentificadorView);
 			view = action;
-			break;
+			break;		
 		case "aniadirTema":
 			AniadirTemaView aniadirTemaView = new AniadirTemaView();
 			aniadirTemaView.setControllerFactory(controllerFactory);
@@ -73,12 +73,16 @@ public class Dispatcher extends HttpServlet {
 		Tema tema = new Tema();
 		String view;
 		switch (action) {
-			case "eliminarTema":
-				EliminarTemaView eliminarTemaView = new EliminarTemaView();
-				eliminarTemaView.setControllerFactory(controllerFactory);
-				Integer id = Integer.valueOf(request.getParameter("tema"));
-	            request.setAttribute(action, eliminarTemaView);
-				view = eliminarTemaView.eliminarTema(id);
+			case "introducirIdentificador":				
+				IntroducirIdentificadorView introducirIdentificadorView = new IntroducirIdentificadorView();
+				introducirIdentificadorView.setControllerFactory(controllerFactory);
+				String codigoAutorizacion = request.getParameter("codigoAutorizacion");				
+				view = introducirIdentificadorView.comprobarCodigoAutorizacion(codigoAutorizacion);
+				if(view.equals("eliminarTema")){					
+					EliminarTemaView eliminarTemaView = new EliminarTemaView();
+					eliminarTemaView.setControllerFactory(controllerFactory);
+					request.setAttribute("eliminarTemaView", eliminarTemaView);
+				}
 				break;
 			case "aniadirTema":
 				AniadirTemaView aniadirTemaView = new AniadirTemaView();
@@ -88,6 +92,13 @@ public class Dispatcher extends HttpServlet {
 	            request.setAttribute(action, aniadirTemaView);
 				view = aniadirTemaView.aniadirTema(tema);
 				break;
+			case "eliminarTema":
+				EliminarTemaView eliminarTemaView = new EliminarTemaView();
+				eliminarTemaView.setControllerFactory(controllerFactory);
+				Integer id = Integer.valueOf(request.getParameter("tema"));
+	            request.setAttribute(action, eliminarTemaView);	            
+				view = eliminarTemaView.eliminarTema(id);
+				break;	
 			default:
 				view = "home";
 		}
