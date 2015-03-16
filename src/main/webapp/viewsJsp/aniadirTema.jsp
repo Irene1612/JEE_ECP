@@ -9,7 +9,6 @@
 </head>
 <body>
 	<h1>Añadir Tema</h1>
-	<c:set var="verTemasView" scope="request" value="${aniadirTemaView}" />
 	<form action="/VotacionesApp/jsp/aniadirTema" method="post">
 		Nombre: <input type="text" name="nombreTema"><br>
 		Pregunta: <input type="text" name="preguntaTema"><br>

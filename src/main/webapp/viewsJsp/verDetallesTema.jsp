@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Tema 1</title>
 </head>
-<body>
-	<h1>Tema 1</h1>
-	<c:set var="verTemasView" scope="request" value="${verDetallesTemaView}" />
+<body>	
+	<c:set var="verDetallesTemaView" scope="request" value="${verDetallesTemaView}" />
 <%-- 	<div>${verDetallesTemaView.update()}</div> --%>
+	<h1>${verDetallesTemaView.tema.nombre}</h1>
 	<form action="/VotacionesApp/jsp/votarTemas" method="post">
 		
 		<input type="submit" value="Votar" />	

@@ -72,6 +72,7 @@ public class Dispatcher extends HttpServlet {
 		String action = request.getPathInfo().substring(1);
 		Tema tema = new Tema();
 		String view;
+		Integer id;
 		switch (action) {
 			case "introducirIdentificador":				
 				IntroducirIdentificadorView introducirIdentificadorView = new IntroducirIdentificadorView();
@@ -95,10 +96,19 @@ public class Dispatcher extends HttpServlet {
 			case "eliminarTema":
 				EliminarTemaView eliminarTemaView = new EliminarTemaView();
 				eliminarTemaView.setControllerFactory(controllerFactory);
-				Integer id = Integer.valueOf(request.getParameter("tema"));
+				id = Integer.valueOf(request.getParameter("tema"));
 	            request.setAttribute(action, eliminarTemaView);	            
 				view = eliminarTemaView.eliminarTema(id);
-				break;	
+				break;
+			case "verDetallesTema":
+				VerDetallesTemaView verDetallesTemaView = new VerDetallesTemaView();
+				verDetallesTemaView.setControllerFactory(controllerFactory);
+				id = Integer.valueOf(request.getParameter("tema"));
+				tema = verDetallesTemaView.conseguirTema(id);
+				verDetallesTemaView.setTema(tema);
+				request.setAttribute(action, verDetallesTemaView);
+				view = action;
+				break;
 			default:
 				view = "home";
 		}
