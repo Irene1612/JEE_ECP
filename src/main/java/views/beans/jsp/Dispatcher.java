@@ -83,8 +83,7 @@ public class Dispatcher extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getPathInfo().substring(1);
-		Tema tema = new Tema();
+		String action = request.getPathInfo().substring(1);		
 		String view;
 		Integer id;
 		switch (action) {
@@ -100,6 +99,7 @@ public class Dispatcher extends HttpServlet {
 				}
 				break;
 			case "aniadirTema":
+				Tema tema = new Tema();
 				AniadirTemaView aniadirTemaView = new AniadirTemaView();
 				aniadirTemaView.setControllerFactory(controllerFactory);
 				tema.setNombre(request.getParameter("nombreTema"));
@@ -113,7 +113,15 @@ public class Dispatcher extends HttpServlet {
 				id = Integer.valueOf(request.getParameter("tema"));
 	            request.setAttribute(action, eliminarTemaView);	            
 				view = eliminarTemaView.eliminarTema(id);
-				break;			
+				break;
+			case "votarTema":
+				VotarTemaView votarTemaView = new VotarTemaView();
+				votarTemaView.setControllerFactory(controllerFactory);
+				id = Integer.valueOf(request.getParameter("tema"));
+				int valoracion = Integer.parseInt(request.getParameter("valoracion"));
+				String nivelEstudios = request.getParameter("nivelEstudios");
+				view = votarTemaView.aniadirVoto(id, valoracion, nivelEstudios, request.getRemoteAddr());
+				break;
 			default:
 				view = "home";
 		}

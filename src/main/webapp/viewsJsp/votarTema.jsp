@@ -21,10 +21,10 @@
 		</select><br>
 		Seleccione el nivel de estudios:
 		<select name="nivelEstudios">
-			<option value="0">Sin estudios</option>	
-			<option value="1">Eso</option>	
-			<option value="2">Bachillerato-FP</option>	
-			<option value="3">Universitario</option>		
+			<option value="SIN_ESTUDIOS">Sin estudios</option>	
+			<option value="ESO">Eso</option>	
+			<option value="BACHILLERATO_FP">Bachillerato-FP</option>	
+			<option value="UNIVERSITARIO">Universitario</option>		
 		</select>
 		<input type="hidden" name="tema" value="${votarTemaView.id}">
 		<input type="submit" value="Votar">
