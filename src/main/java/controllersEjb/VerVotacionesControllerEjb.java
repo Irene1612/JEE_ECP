@@ -7,6 +7,7 @@ import controllers.VerVotacionesController;
 
 public class VerVotacionesControllerEjb extends TemaControllerEjb implements VerVotacionesController {
 	
+	@Override
 	public Tema getTema(Integer id){
 		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
 		return temaDao.read(id);

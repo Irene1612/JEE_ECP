@@ -4,7 +4,7 @@ import controllers.ControllerFactory;
 
 public abstract class ViewBean {
 
-    private ControllerFactory controllerFactory;
+    protected ControllerFactory controllerFactory;
 
     public void setControllerFactory(ControllerFactory controllerFactory) {
         this.controllerFactory = controllerFactory;

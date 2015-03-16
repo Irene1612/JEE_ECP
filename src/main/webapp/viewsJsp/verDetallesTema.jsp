@@ -9,14 +9,39 @@
 </head>
 <body>	
 	<c:set var="verDetallesTemaView" scope="request" value="${verDetallesTemaView}" />
-<%-- 	<div>${verDetallesTemaView.update()}</div> --%>
+	<div>${verDetallesTemaView.update()}</div>
 	<h1>${verDetallesTemaView.tema.nombre}</h1>
-	<form action="/VotacionesApp/jsp/votarTemas" method="post">
-		
+	<h2>${verDetallesTemaView.tema.pregunta}</h2>
+	<p>Numero de votos: ${verDetallesTemaView.numeroVotos}</p>
+	<form action="/VotacionesApp/jsp/votarTema" method="get">
+		<fieldset>
+    		<legend>Puntuaciones</legend>
+    		Sin estudios: 
+    		<c:choose>
+				<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[0]==0}">-</c:when>
+				<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[0]}</c:otherwise>
+			</c:choose>
+    		Eso: 
+    		<c:choose>
+				<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[1]==0}">-</c:when>
+				<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[1]}</c:otherwise>
+			</c:choose>    		
+    		Bachillerato-FP: 
+			<c:choose>
+				<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[2]==0}">-</c:when>
+				<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[2]}</c:otherwise>
+			</c:choose>  
+    		Universitario: 
+			<c:choose>
+				<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[3]==0}">-</c:when>
+				<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[3]}</c:otherwise>
+			</c:choose>
+    	</fieldset>
+		<input type="hidden" name="tema" value="${verDetallesTemaView.id}">
 		<input type="submit" value="Votar" />	
-	</form>
-	<p>
-		<a href="/VotacionesApp/jsp/verTemas">Atrás</a>
-	</p>
+	</form>	
+	<form action="/VotacionesApp/jsp/verTemas">
+    	<input type="submit" value="Atrás">
+	</form>	
 </body>
 </html>

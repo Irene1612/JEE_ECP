@@ -56,6 +56,13 @@ public class Dispatcher extends HttpServlet {
 			request.setAttribute(action + "View", aniadirTemaView);
 			view = action;
 			break;
+		case "verDetallesTema":
+			VerDetallesTemaView verDetallesTemaView = new VerDetallesTemaView();
+			verDetallesTemaView.setControllerFactory(controllerFactory);
+			verDetallesTemaView.setId(Integer.valueOf(request.getParameter("tema")));
+			request.setAttribute(action + "View", verDetallesTemaView);
+			view = action;
+			break;	
 		default:
 			view = "home";
 		}
@@ -99,16 +106,7 @@ public class Dispatcher extends HttpServlet {
 				id = Integer.valueOf(request.getParameter("tema"));
 	            request.setAttribute(action, eliminarTemaView);	            
 				view = eliminarTemaView.eliminarTema(id);
-				break;
-			case "verDetallesTema":
-				VerDetallesTemaView verDetallesTemaView = new VerDetallesTemaView();
-				verDetallesTemaView.setControllerFactory(controllerFactory);
-				id = Integer.valueOf(request.getParameter("tema"));
-				tema = verDetallesTemaView.conseguirTema(id);
-				verDetallesTemaView.setTema(tema);
-				request.setAttribute(action, verDetallesTemaView);
-				view = action;
-				break;
+				break;			
 			default:
 				view = "home";
 		}
