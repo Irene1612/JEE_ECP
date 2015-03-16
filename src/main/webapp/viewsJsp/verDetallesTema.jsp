@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Tema 1</title>
+<title>Detalles Tema</title>
 </head>
 <body>	
 	<c:set var="verDetallesTemaView" scope="request" value="${verDetallesTemaView}" />
