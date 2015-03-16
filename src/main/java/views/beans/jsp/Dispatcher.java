@@ -63,6 +63,13 @@ public class Dispatcher extends HttpServlet {
 			request.setAttribute(action + "View", verDetallesTemaView);
 			view = action;
 			break;	
+		case "votarTema":
+			VotarTemaView votarTemaView = new VotarTemaView();
+			votarTemaView.setControllerFactory(controllerFactory);
+			votarTemaView.setId(Integer.valueOf(request.getParameter("tema")));
+			request.setAttribute(action + "View", votarTemaView);
+			view = action;
+			break;	
 		default:
 			view = "home";
 		}
