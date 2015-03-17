@@ -26,9 +26,9 @@
     	</fieldset>
 		<input type="hidden" name="tema" value="${verDetallesTemaView.id}">
 		<input type="submit" value="Votar" />	
-	</form>	
-	<form action="/VotacionesApp/jsp/verTemas">
-    	<input type="submit" value="Atrás">
-	</form>	
+	</form>
+	<p>
+		<a href="/VotacionesApp/jsp/verTemas">Atrás</a>
+	</p>	
 </body>
 </html>

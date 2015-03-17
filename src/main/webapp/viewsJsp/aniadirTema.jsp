@@ -14,8 +14,8 @@
 		Pregunta: <input type="text" name="preguntaTema"><br>
 		<input type="submit" value="Añadir">
 	</form>
-	<form action="/VotacionesApp/jsp/home">
-    	<input type="submit" value="Atrás">
-	</form>
+	<p>
+		<a href="/VotacionesApp/jsp/home">Atrás</a>
+	</p>
 </body>
 </html>

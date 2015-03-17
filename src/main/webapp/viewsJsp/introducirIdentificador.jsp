@@ -14,8 +14,8 @@
 		Introduzca código de autorización: <input type="text" name="codigoAutorizacion"><br>
 		<input type="submit" value="Enviar">
 	</form>
-	<form action="/VotacionesApp/jsp/home">
-    	<input type="submit" value="Atrás">
-	</form>
+	<p>
+		<a href="/VotacionesApp/jsp/home">Atrás</a>
+	</p>
 </body>
 </html>
