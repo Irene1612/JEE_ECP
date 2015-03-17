@@ -11,7 +11,7 @@
 	<h1>Temas</h1>
 	<c:set var="verTemasView" scope="request" value="${verTemasView}" />
 	<div>${verTemasView.update()}</div>
-	<form action="/VotacionesApp/jsp/verDetallesTema" method="get">
+	<form action="/VotacionesApp/jsp/verDetallesTema" method="post">
 		<c:choose>
 			<c:when test="${verTemasView.hayTemas==false}">
 				<p>${verTemasView.errorMsg}</p>

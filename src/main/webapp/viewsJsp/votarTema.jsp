@@ -12,7 +12,7 @@
 	<div>${votarTemaView.update()}</div>
 	<h1>${votarTemaView.tema.nombre}</h1>
 	<h2>${votarTemaView.tema.pregunta}</h2>
-	<form action="/VotacionesApp/jsp/votarTema" method="post">
+	<form action="/VotacionesApp/jsp/procesarVoto" method="post">
 		Seleccione una puntuación para votar este tema:
 		<select name="valoracion">
 		<c:forEach var="iterador" begin="0" end="${votarTemaView.valorMaximoVotacion}">

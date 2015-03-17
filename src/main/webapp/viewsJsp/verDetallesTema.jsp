@@ -13,14 +13,14 @@
 	<h1>${verDetallesTemaView.tema.nombre}</h1>
 	<h2>${verDetallesTemaView.tema.pregunta}</h2>
 	<p>Numero de votos: ${verDetallesTemaView.numeroVotos}</p>
-	<form action="/VotacionesApp/jsp/votarTema" method="get">
+	<form action="/VotacionesApp/jsp/votarTema" method="post">
 		<fieldset>
     		<legend>Puntuaciones</legend>
-    		<c:forEach var="iterador" begin="0" end="${verDetallesTemaView.cantidadNiveles}" >
-    			${verDetallesTemaView.nivelesEstudios[iterador]}:
+    		<c:forEach var="nivelEstudio" items="${verDetallesTemaView.nivelEstudioVotos}" >
+    			${nivelEstudio.nombre}:
     			<c:choose>
-					<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[iterador]==null}">-</c:when>
-					<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[iterador]}</c:otherwise>
+					<c:when test="${nivelEstudio.mediaVotos==null}">-</c:when>
+					<c:otherwise>${nivelEstudio.mediaVotos}</c:otherwise>
 				</c:choose>
     		</c:forEach>
     	</fieldset>

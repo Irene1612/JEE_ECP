@@ -55,21 +55,7 @@ public class Dispatcher extends HttpServlet {
 			aniadirTemaView.setControllerFactory(controllerFactory);
 			request.setAttribute(action + "View", aniadirTemaView);
 			view = action;
-			break;
-		case "verDetallesTema":
-			VerDetallesTemaView verDetallesTemaView = new VerDetallesTemaView();
-			verDetallesTemaView.setControllerFactory(controllerFactory);
-			verDetallesTemaView.setId(Integer.valueOf(request.getParameter("tema")));
-			request.setAttribute(action + "View", verDetallesTemaView);
-			view = action;
-			break;	
-		case "votarTema":
-			VotarTemaView votarTemaView = new VotarTemaView();
-			votarTemaView.setControllerFactory(controllerFactory);
-			votarTemaView.setId(Integer.valueOf(request.getParameter("tema")));
-			request.setAttribute(action + "View", votarTemaView);
-			view = action;
-			break;	
+			break;				
 		default:
 			view = "home";
 		}
@@ -86,6 +72,7 @@ public class Dispatcher extends HttpServlet {
 		String action = request.getPathInfo().substring(1);		
 		String view;
 		Integer id;
+		VotarTemaView votarTemaView;
 		switch (action) {
 			case "introducirIdentificador":				
 				IntroducirIdentificadorView introducirIdentificadorView = new IntroducirIdentificadorView();
@@ -115,13 +102,27 @@ public class Dispatcher extends HttpServlet {
 				view = eliminarTemaView.eliminarTema(id);
 				break;
 			case "votarTema":
-				VotarTemaView votarTemaView = new VotarTemaView();
+				votarTemaView = new VotarTemaView();
+				votarTemaView.setControllerFactory(controllerFactory);
+				votarTemaView.setId(Integer.valueOf(request.getParameter("tema")));
+				request.setAttribute(action + "View", votarTemaView);
+				view = action;
+				break;	
+			case "procesarVoto":
+				votarTemaView = new VotarTemaView();
 				votarTemaView.setControllerFactory(controllerFactory);
 				id = Integer.valueOf(request.getParameter("tema"));
 				int valoracion = Integer.parseInt(request.getParameter("valoracion"));
 				int nivelEstudios = Integer.parseInt(request.getParameter("nivelEstudios"));
 				view = votarTemaView.aniadirVoto(id, valoracion, nivelEstudios, request.getRemoteAddr());
 				break;
+			case "verDetallesTema":
+				VerDetallesTemaView verDetallesTemaView = new VerDetallesTemaView();
+				verDetallesTemaView.setControllerFactory(controllerFactory);
+				verDetallesTemaView.setId(Integer.valueOf(request.getParameter("tema")));
+				request.setAttribute(action + "View", verDetallesTemaView);
+				view = action;
+				break;	
 			default:
 				view = "home";
 		}

@@ -1,6 +1,6 @@
 package models.utils;
 
-public enum NivelEstudios {
+public enum NivelEstudios {	
 	SIN_ESTUDIOS("Sin estudios"), ESO("Eso"), BACHILLERATO_FP("Bachillerato-FP"), UNIVERSITARIO(
 			"Universitario");
 
