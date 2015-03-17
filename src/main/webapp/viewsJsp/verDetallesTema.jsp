@@ -16,26 +16,13 @@
 	<form action="/VotacionesApp/jsp/votarTema" method="get">
 		<fieldset>
     		<legend>Puntuaciones</legend>
-    		Sin estudios: 
-    		<c:choose>
-				<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[0]==0}">-</c:when>
-				<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[0]}</c:otherwise>
-			</c:choose>
-    		Eso: 
-    		<c:choose>
-				<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[1]==0}">-</c:when>
-				<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[1]}</c:otherwise>
-			</c:choose>    		
-    		Bachillerato-FP: 
-			<c:choose>
-				<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[2]==0}">-</c:when>
-				<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[2]}</c:otherwise>
-			</c:choose>  
-    		Universitario: 
-			<c:choose>
-				<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[3]==0}">-</c:when>
-				<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[3]}</c:otherwise>
-			</c:choose>
+    		<c:forEach var="iterador" begin="0" end="${verDetallesTemaView.cantidadNiveles}" >
+    			${verDetallesTemaView.nivelesEstudios[iterador]}:
+    			<c:choose>
+					<c:when test="${verDetallesTemaView.mediaPorNivelEstudios[iterador]==null}">-</c:when>
+					<c:otherwise>${verDetallesTemaView.mediaPorNivelEstudios[iterador]}</c:otherwise>
+				</c:choose>
+    		</c:forEach>
     	</fieldset>
 		<input type="hidden" name="tema" value="${verDetallesTemaView.id}">
 		<input type="submit" value="Votar" />	

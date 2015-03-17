@@ -119,7 +119,7 @@ public class Dispatcher extends HttpServlet {
 				votarTemaView.setControllerFactory(controllerFactory);
 				id = Integer.valueOf(request.getParameter("tema"));
 				int valoracion = Integer.parseInt(request.getParameter("valoracion"));
-				String nivelEstudios = request.getParameter("nivelEstudios");
+				int nivelEstudios = Integer.parseInt(request.getParameter("nivelEstudios"));
 				view = votarTemaView.aniadirVoto(id, valoracion, nivelEstudios, request.getRemoteAddr());
 				break;
 			default:

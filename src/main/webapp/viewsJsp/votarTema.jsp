@@ -15,16 +15,15 @@
 	<form action="/VotacionesApp/jsp/votarTema" method="post">
 		Seleccione una puntuación para votar este tema:
 		<select name="valoracion">
-		<c:forEach var="i" begin="0" end="10">
-			<option value="${i}">${i}</option>
+		<c:forEach var="iterador" begin="0" end="${votarTemaView.valorMaximoVotacion}">
+			<option value="${iterador}">${iterador}</option>
 		</c:forEach>
 		</select><br>
 		Seleccione el nivel de estudios:
 		<select name="nivelEstudios">
-			<option value="SIN_ESTUDIOS">Sin estudios</option>	
-			<option value="ESO">Eso</option>	
-			<option value="BACHILLERATO_FP">Bachillerato-FP</option>	
-			<option value="UNIVERSITARIO">Universitario</option>		
+			<c:forEach var="iterador" begin="0" end="${votarTemaView.cantidadNiveles}" >
+				<option value="${iterador}">${votarTemaView.nivelesEstudiosString[iterador]}</option>
+			</c:forEach>	
 		</select>
 		<input type="hidden" name="tema" value="${votarTemaView.id}">
 		<input type="submit" value="Votar">
