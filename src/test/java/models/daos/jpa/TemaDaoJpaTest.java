@@ -30,7 +30,7 @@ public class TemaDaoJpaTest {
 	@Before
 	public void init() {
 		dao = DaoJpaFactory.getFactory().getTemaDao();
-		tema = new Tema("tema1", "¿Te gusta el tema 1?", new ArrayList<Voto>());	
+		tema = new Tema("tema1", "¿Te gusta el tema 1?", new ArrayList<Voto>());
 		dao.create(tema);
 	}
 
@@ -41,7 +41,7 @@ public class TemaDaoJpaTest {
 
 	@Test
 	public void testUpdate() {
-		Voto voto = new Voto(1, "13.0.0.0", NivelEstudios.BACHILLERATO_FP,3);		
+		Voto voto = new Voto(1, "13.0.0.0", NivelEstudios.BACHILLERATO_FP, 3);
 		tema.putVoto(voto);
 		dao.update(tema);
 		assertEquals(tema, dao.read(tema.getId()));
@@ -60,6 +60,6 @@ public class TemaDaoJpaTest {
 
 	@After
 	public void after() {
-		dao.deleteById(tema.getId());		
+		dao.deleteById(tema.getId());
 	}
 }

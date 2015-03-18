@@ -8,9 +8,7 @@
 </head>
 <body>
 	<h1>Voto añadido</h1>
-	<p>
-		El voto ha sido añadido correctamente.
-	</p>
+	<p>El voto ha sido añadido correctamente.</p>
 	<p>
 		<a href="/VotacionesApp/jsp/home">Volver al principio</a>
 	</p>

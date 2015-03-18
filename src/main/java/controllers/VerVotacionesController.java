@@ -6,7 +6,7 @@ import models.entities.Tema;
 import models.entities.Voto;
 import models.utils.NivelEstudioVotos;
 
-public interface VerVotacionesController extends TemaController{
+public interface VerVotacionesController extends TemaController {
 
 	public Tema getTema(Integer id);
 

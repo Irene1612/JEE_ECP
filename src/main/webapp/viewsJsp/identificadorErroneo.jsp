@@ -8,9 +8,7 @@
 </head>
 <body>
 	<h1>Identificador Erroneo</h1>
-	<p>
-		El codigo de autorización no es correcto.
-	</p>
+	<p>El codigo de autorización no es correcto.</p>
 	<p>
 		<a href="/VotacionesApp/jsp/introducirIdentificador">Atrás</a>
 	</p>

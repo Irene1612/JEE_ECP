@@ -7,12 +7,13 @@ import models.daos.jpa.DaoJpaFactory;
 import controllers.EliminarTemaController;
 
 public class EliminarTemaControllerEjb extends TemaControllerEjb implements EliminarTemaController {
-	
+
 	@Override
 	public void eliminarTema(Integer id) {
 		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
-		LogManager.getLogger(AniadirTemaControllerEjb.class).debug("Tema eliminado: " + temaDao.read(id).toString());
-		temaDao.deleteById(id);		
+		LogManager.getLogger(AniadirTemaControllerEjb.class).debug(
+				"Tema eliminado: " + temaDao.read(id).toString());
+		temaDao.deleteById(id);
 	}
 
 }

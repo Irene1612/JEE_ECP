@@ -18,7 +18,7 @@ public class Tema {
 	private Integer id;
 
 	private String nombre;
-	
+
 	private String pregunta;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -27,11 +27,11 @@ public class Tema {
 	public Tema() {
 		this.votos = new ArrayList<Voto>();
 	}
-	
+
 	public Tema(String nombre, String pregunta) {
 		this();
 		this.nombre = nombre;
-		this.pregunta = pregunta;		
+		this.pregunta = pregunta;
 	}
 
 	public Tema(String nombre, String pregunta, List<Voto> votos) {
@@ -39,7 +39,7 @@ public class Tema {
 		this.votos = new ArrayList<Voto>();
 		this.votos.addAll(votos);
 	}
-	
+
 	public Tema(Integer id, String nombre, String pregunta, List<Voto> votos) {
 		this(nombre, pregunta, votos);
 		this.id = id;
@@ -76,22 +76,22 @@ public class Tema {
 	public void setVotos(List<Voto> votos) {
 		this.votos = votos;
 	}
-	
+
 	public void putVoto(Voto voto) {
-        this.votos.add(voto);
-    }
+		this.votos.add(voto);
+	}
 
 	@Override
 	public String toString() {
-		return "Tema [id=" + id + ", nombre=" + nombre + ", pregunta="
-				+ pregunta + ", votos=" + votos + "]";
+		return "Tema [id=" + id + ", nombre=" + nombre + ", pregunta=" + pregunta + ", votos=" + votos + "]";
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		Tema tema = (Tema) obj;
-		return this.id.equals(tema.id) && this.nombre.equals(tema.nombre) && this.pregunta.equals(tema.pregunta) && this.listaVotosEqual(tema);
-	}	
+		return this.id.equals(tema.id) && this.nombre.equals(tema.nombre)
+				&& this.pregunta.equals(tema.pregunta) && this.listaVotosEqual(tema);
+	}
 
 	private boolean listaVotosEqual(Tema tema) {
 		return this.votos.containsAll(tema.votos);

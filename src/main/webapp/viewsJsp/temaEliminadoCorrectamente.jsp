@@ -8,9 +8,7 @@
 </head>
 <body>
 	<h1>Tema eliminado</h1>
-	<p>
-		El tema ha sido eliminado correctamente
-	</p>
+	<p>El tema ha sido eliminado correctamente</p>
 	<p>
 		<a href="/VotacionesApp/jsp/home">Volver al principio</a>
 	</p>

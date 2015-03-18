@@ -14,5 +14,5 @@ public class AniadirTemaControllerEjb implements AniadirTemaController {
 		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
 		temaDao.create(tema);
 		LogManager.getLogger(AniadirTemaControllerEjb.class).debug("Tema creado: " + tema.toString());
-	}	
+	}
 }

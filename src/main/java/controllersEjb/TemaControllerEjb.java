@@ -8,15 +8,15 @@ import models.entities.Tema;
 import controllers.TemaController;
 
 public abstract class TemaControllerEjb implements TemaController {
-	
+
 	@Override
-	public List<Tema> getTemas() {	
+	public List<Tema> getTemas() {
 		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
 		return temaDao.findAll();
 	}
 
 	@Override
-	public boolean hayTemas() {		
+	public boolean hayTemas() {
 		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
 		return !temaDao.findAll().isEmpty();
 	}

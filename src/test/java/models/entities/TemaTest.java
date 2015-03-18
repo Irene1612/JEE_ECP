@@ -28,8 +28,7 @@ public class TemaTest {
 	public void testEqualsTema() {
 		Voto voto = new Voto("13.0.0.0", NivelEstudios.BACHILLERATO_FP, 3);
 		tema.putVoto(voto);
-		Tema temaAux = new Tema(1, "tema1", "¿Te gusta el tema 1?",
-				new ArrayList<Voto>());
+		Tema temaAux = new Tema(1, "tema1", "¿Te gusta el tema 1?", new ArrayList<Voto>());
 		temaAux.putVoto(voto);
 		assertTrue(tema.equals(temaAux));
 	}

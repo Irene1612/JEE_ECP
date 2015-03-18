@@ -14,7 +14,7 @@ import models.utils.NivelEstudios;
 
 public class VotoDaoJpaTest {
 
-	private VotoDao dao; 
+	private VotoDao dao;
 
 	private Voto voto;
 
@@ -53,9 +53,9 @@ public class VotoDaoJpaTest {
 	public void testFindAll() {
 		assertTrue(dao.findAll().size() == 1);
 	}
-	
+
 	@After
-	public void after(){
+	public void after() {
 		dao.deleteById(voto.getId());
 	}
 }

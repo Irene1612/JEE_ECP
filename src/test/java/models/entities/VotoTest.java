@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class VotoTest {
-	
+
 	private Voto voto;
 
 	@Before

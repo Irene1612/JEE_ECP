@@ -1,5 +1,5 @@
 package controllers;
 
-public interface EliminarTemaController extends TemaController{
+public interface EliminarTemaController extends TemaController {
 	void eliminarTema(Integer id);
 }

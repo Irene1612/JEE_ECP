@@ -8,10 +8,10 @@ import models.utils.NivelEstudios;
 
 @Entity
 public class Voto {
-	
+
 	public static final String TABLE = "voto";
 
-    public static final String ID = "ID";
+	public static final String ID = "ID";
 
 	@Id
 	@GeneratedValue
@@ -29,15 +29,13 @@ public class Voto {
 	public Voto() {
 	}
 
-	public Voto(String usuarioIP, NivelEstudios nivelEstudios,
-			int valoracion) {		
+	public Voto(String usuarioIP, NivelEstudios nivelEstudios, int valoracion) {
 		this.usuarioIP = usuarioIP;
 		this.nivelEstudios = nivelEstudios;
 		this.valoracion = valoracion;
-	}	
+	}
 
-	public Voto(Integer id, String usuarioIP, NivelEstudios nivelEstudios,
-			int valoracion) {
+	public Voto(Integer id, String usuarioIP, NivelEstudios nivelEstudios, int valoracion) {
 		this(usuarioIP, nivelEstudios, valoracion);
 		this.id = id;
 	}
@@ -76,16 +74,14 @@ public class Voto {
 
 	@Override
 	public String toString() {
-		return "Voto [id=" + id + ", usuarioIP=" + usuarioIP
-				+ ", nivelEstudios=" + nivelEstudios + ", valoracion="
-				+ valoracion + "]";
+		return "Voto [id=" + id + ", usuarioIP=" + usuarioIP + ", nivelEstudios=" + nivelEstudios
+				+ ", valoracion=" + valoracion + "]";
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		Voto voto = (Voto) obj;
 		return this.id == voto.id && this.nivelEstudios.equals(voto.nivelEstudios)
-				&& this.usuarioIP.equals(voto.usuarioIP)
-				&& this.valoracion == voto.valoracion;
+				&& this.usuarioIP.equals(voto.usuarioIP) && this.valoracion == voto.valoracion;
 	}
 }

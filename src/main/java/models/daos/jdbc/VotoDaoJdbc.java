@@ -12,8 +12,7 @@ import models.utils.NivelEstudios;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements
-		VotoDao {
+public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements VotoDao {
 
 	private Logger log = LogManager.getLogger(VotoDaoJdbc.class);
 
@@ -21,8 +20,8 @@ public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements
 		Voto voto;
 		try {
 			if (resultSet != null && resultSet.next()) {
-				voto = new Voto(resultSet.getString(Voto.USUARIO_IP),
-						NivelEstudios.values()[resultSet.getInt(Voto.NIVEL_ESTUDIOS)], resultSet.getInt(Voto.VALORACION));
+				voto = new Voto(resultSet.getString(Voto.USUARIO_IP), NivelEstudios.values()[resultSet
+						.getInt(Voto.NIVEL_ESTUDIOS)], resultSet.getInt(Voto.VALORACION));
 				return voto;
 			}
 		} catch (SQLException e) {
@@ -35,22 +34,22 @@ public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements
 			+ "%s INT, PRIMARY KEY (%s))";
 
 	public static String sqlToCreateTable() {
-		return String.format(SQL_CREATE_TABLE, Voto.TABLE, Voto.ID, Voto.NIVEL_ESTUDIOS,
-				Voto.USUARIO_IP, Voto.VALORACION, Voto.ID);
+		return String.format(SQL_CREATE_TABLE, Voto.TABLE, Voto.ID, Voto.NIVEL_ESTUDIOS, Voto.USUARIO_IP,
+				Voto.VALORACION, Voto.ID);
 	}
 
 	private static final String SQL_INSERT = "INSERT INTO %s (%s,%s,%s) VALUES (%d,'%s',%d)";
 
 	@Override
-    public void create(Voto voto) {
-        this.updateSql(String.format(SQL_INSERT, Voto.TABLE, Voto.NIVEL_ESTUDIOS, Voto.USUARIO_IP, Voto.VALORACION, voto.getNivelEstudios(), voto.getUsuarioIP(), voto.getValoracion()));
-        voto.setId(this.autoId());
-    }
+	public void create(Voto voto) {
+		this.updateSql(String.format(SQL_INSERT, Voto.TABLE, Voto.NIVEL_ESTUDIOS, Voto.USUARIO_IP,
+				Voto.VALORACION, voto.getNivelEstudios(), voto.getUsuarioIP(), voto.getValoracion()));
+		voto.setId(this.autoId());
+	}
 
 	@Override
 	public Voto read(Integer id) {
-		ResultSet resultSet = this.query(String.format(SQL_SELECT_ID,
-				Voto.TABLE, id));
+		ResultSet resultSet = this.query(String.format(SQL_SELECT_ID, Voto.TABLE, id));
 		return this.create(resultSet);
 	}
 
@@ -73,8 +72,7 @@ public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements
 	@Override
 	public List<Voto> findAll() {
 		List<Voto> list = new ArrayList<Voto>();
-		ResultSet resultSet = this.query(String.format(SQL_SELECT_ALL,
-				Voto.TABLE));
+		ResultSet resultSet = this.query(String.format(SQL_SELECT_ALL, Voto.TABLE));
 		Voto voto = this.create(resultSet);
 		while (voto != null) {
 			list.add(voto);
