@@ -1,4 +1,4 @@
-package views.beans.jsp;
+package viewsBeans;
 
 import org.apache.logging.log4j.LogManager;
 

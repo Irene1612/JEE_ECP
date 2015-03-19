@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 
-import views.beans.jsp.VerDetallesTemaView;
+import viewsBeans.VerDetallesTemaView;
 import models.daos.TemaDao;
 import models.daos.jpa.DaoJpaFactory;
 import models.entities.Tema;

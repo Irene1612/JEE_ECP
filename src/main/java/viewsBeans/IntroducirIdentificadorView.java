@@ -1,4 +1,4 @@
-package views.beans.jsp;
+package viewsBeans;
 
 public class IntroducirIdentificadorView extends ViewBean {
 

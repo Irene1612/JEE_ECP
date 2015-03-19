@@ -1,4 +1,4 @@
-package views.beans.jsp;
+package viewsBeans;
 
 import java.util.ArrayList;
 import java.util.List;

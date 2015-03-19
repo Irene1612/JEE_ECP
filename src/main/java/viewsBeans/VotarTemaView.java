@@ -1,4 +1,4 @@
-package views.beans.jsp;
+package viewsBeans;
 
 import controllers.VotarController;
 import models.entities.Tema;

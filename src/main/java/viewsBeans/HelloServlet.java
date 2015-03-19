@@ -1,4 +1,4 @@
-package views.beans.jsp;
+package viewsBeans;
 
 import java.io.IOException;
 import java.io.PrintWriter;
