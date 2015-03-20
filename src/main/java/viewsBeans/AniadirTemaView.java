@@ -1,6 +1,7 @@
 package viewsBeans;
 
-import javax.annotation.ManagedBean;
+
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import org.apache.logging.log4j.LogManager;
