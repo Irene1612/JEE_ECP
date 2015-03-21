@@ -9,7 +9,14 @@
 </h:head>
 <h:body>
 	<h1>Eliminar Tema</h1>
-	
+	<h:form id="eliminarTemaView">
+		<h:selectOneMenu value="#{eliminarTemaView.idTema}">  
+		<f:selectItems value="#{eliminarTemaView.temas}" var="tema"
+					itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
+		</h:selectOneMenu>
+		<h:commandButton value="Eliminar" 
+				action="#{eliminarTemaView.process}" />	 
+	 </h:form>
 	<p>
 		<h:link value="Atrás" outcome="home"/>
 	</p>	

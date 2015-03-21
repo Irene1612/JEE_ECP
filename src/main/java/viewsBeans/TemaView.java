@@ -3,6 +3,8 @@ package viewsBeans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedProperty;
+
 import org.apache.logging.log4j.LogManager;
 
 import controllers.TemaController;
@@ -10,11 +12,12 @@ import models.entities.Tema;
 
 public abstract class TemaView extends ViewBean {
 
+	@ManagedProperty(value = "#{temas}")
 	public List<Tema> temas;
 
 	public boolean hayTemas;
 
-	public String errorMsg;
+	public String errorMsg;	
 
 	public List<Tema> getTemas() {
 		return temas;
