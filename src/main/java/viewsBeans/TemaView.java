@@ -12,6 +12,39 @@ import models.entities.Tema;
 
 public abstract class TemaView extends ViewBean {
 
+	@ManagedProperty(value = "#{idTema}")
+	public Integer idTema;
+	
+	@ManagedProperty(value = "#{tema.getNombre()}")
+    private String nombre;
+
+	@ManagedProperty(value = "#{tema.getId()}")
+    private Integer id;	
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getIdTema() {
+		return idTema;
+	}
+
+	public void setIdTema(Integer idTema) {
+		this.idTema = idTema;
+	}
+	
 	@ManagedProperty(value = "#{temas}")
 	public List<Tema> temas;
 

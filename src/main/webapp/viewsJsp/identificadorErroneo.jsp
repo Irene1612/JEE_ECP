@@ -7,8 +7,8 @@
 <title>Identificador Erroneo</title>
 </head>
 <body>
-	<h1>Identificador Erroneo</h1>
-	<p>El codigo de autorización no es correcto.</p>
+	<h1>Identificador erroneo</h1>
+	<p>El identificador es incorrecto.</p>
 	<p>
 		<a href="/VotacionesApp/jsp/introducirIdentificador">Atrás</a>
 	</p>
