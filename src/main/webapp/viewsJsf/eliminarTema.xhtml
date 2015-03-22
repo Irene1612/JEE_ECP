@@ -9,7 +9,8 @@
 </h:head>
 <h:body>
 	<h1>Eliminar Tema</h1>	
-	<h:form id="eliminarTemaView">
+	<h:outputText value="#{eliminarTemaView.errorMsg}" rendered="#{eliminarTemaView.hayTemas==false}"/>
+	<h:form id="eliminarTemaView" rendered="#{eliminarTemaView.hayTemas==true}">
 		<h:selectOneMenu value="#{eliminarTemaView.idTema}">  
 			<f:selectItems value="#{eliminarTemaView.temas}" var="tema"
 					itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
