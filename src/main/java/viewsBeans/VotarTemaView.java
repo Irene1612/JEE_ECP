@@ -1,9 +1,16 @@
 package viewsBeans;
 
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+
 import controllers.VotarController;
 import models.entities.Tema;
 import models.utils.NivelEstudios;
 
+@ManagedBean
+@RequestScoped
 public class VotarTemaView extends ViewBean {
 	public static final int VALOR_MAXIMO_VOTACION = 10;
 	public Tema tema;
@@ -12,6 +19,9 @@ public class VotarTemaView extends ViewBean {
 	public int valorMaximoVotacion;
 	public String[] nivelesEstudiosString;
 	public int cantidadNiveles;
+	
+	@ManagedProperty(value = "#{verDetallesTemaView}")
+    private VerDetallesTemaView verDetallesTemaView;
 
 	public VotarTemaView() {
 		this.valorMaximoVotacion = VALOR_MAXIMO_VOTACION;
@@ -22,6 +32,10 @@ public class VotarTemaView extends ViewBean {
 			this.nivelesEstudiosString[i] = NivelEstudios.values()[i].toString();
 		}
 	}
+	
+	public void setVerDetallesTemaView(VerDetallesTemaView verDetallesTemaView) {
+        this.verDetallesTemaView = verDetallesTemaView;
+    }
 
 	public Tema getTema() {
 		return tema;
@@ -50,15 +64,25 @@ public class VotarTemaView extends ViewBean {
 	public int getCantidadNiveles() {
 		return this.cantidadNiveles;
 	}
-
+	
 	public void update() {
 		VotarController votarController = this.getControllerFactory().getVotarController();
 		this.tema = votarController.getTema(this.id);
+	}
+	
+	@PostConstruct
+	public void updateJsf() {
+		this.id = verDetallesTemaView.getIdTema();
+		this.update();
 	}
 
 	public String aniadirVoto(Integer id, int valoracion, int nivelEstudios, String ip) {
 		VotarController votarController = this.getControllerFactory().getVotarController();
 		votarController.aniadirVoto(id, valoracion, this.nivelEstudios[nivelEstudios], ip);
 		return "votoAniadidoCorrectamente";
+	}
+	
+	public String process(){
+		return null;
 	}
 }
