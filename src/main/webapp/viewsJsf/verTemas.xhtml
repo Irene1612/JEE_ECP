@@ -9,9 +9,16 @@
 </h:head>
 <h:body>
 	<h1>Temas</h1>
-	
-	<p>
-		<h:link value="Atrás" outcome="home"/>
-	</p>	
+	<h:outputText value="#{verTemasView.errorMsg}" rendered="#{verTemasView.hayTemas==false}"/>
+	<h:form id="verTemasView" rendered="#{verTemasView.hayTemas==true}">
+		<h:selectOneMenu value="#{verTemasView.idTema}">  
+			<f:selectItems value="#{verTemasView.temas}" var="tema"
+					itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
+		</h:selectOneMenu>
+		<h:commandButton value="Ver detalles" action="#{verTemasView.process}" />	 
+	</h:form>
+ 	<p>
+ 		<h:link value="Atrás" outcome="home"/>
+ 	</p>	
 </h:body>
 </html>
