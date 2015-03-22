@@ -13,13 +13,20 @@ import models.entities.Tema;
 public abstract class TemaView extends ViewBean {
 
 	@ManagedProperty(value = "#{idTema}")
-	public Integer idTema;
+	protected Integer idTema;
 	
 	@ManagedProperty(value = "#{tema.getNombre()}")
-    private String nombre;
+	protected String nombre;
 
 	@ManagedProperty(value = "#{tema.getId()}")
-    private Integer id;	
+	protected Integer id;	
+	
+	@ManagedProperty(value = "#{temas}")
+	protected List<Tema> temas;
+
+	protected boolean hayTemas;
+
+	protected String errorMsg;
 
 	public String getNombre() {
 		return nombre;
@@ -43,14 +50,7 @@ public abstract class TemaView extends ViewBean {
 
 	public void setIdTema(Integer idTema) {
 		this.idTema = idTema;
-	}
-	
-	@ManagedProperty(value = "#{temas}")
-	public List<Tema> temas;
-
-	public boolean hayTemas;
-
-	public String errorMsg;	
+	}		
 
 	public List<Tema> getTemas() {
 		return temas;

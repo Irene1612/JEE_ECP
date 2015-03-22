@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Detalles Tema</title>
+</h:head>
+<h:body>
+	<h1>${verDetallesTemaView.tema.nombre}</h1>
+	<h2>${verDetallesTemaView.tema.pregunta}</h2>
+	<p>Numero de votos: ${verDetallesTemaView.numeroVotos}</p>
+	<h:form id="verDetallesTemaView">
+		<fieldset>
+			<legend>Puntuaciones</legend>
+			<ui:repeat value="#{verDetallesTemaView.nivelEstudioVotos}" var="nivelEstudio">
+				${nivelEstudio.nombre}:${nivelEstudio.mediaVotos}
+			</ui:repeat>
+		</fieldset>
+		<h:commandButton value="Votar" 
+				action="#{verDetallesTemaView.process}" />
+	</h:form>
+	<p>
+		<h:link value="Atrás" outcome="verTemas"/>
+	</p>	
+</h:body>
+</html>
