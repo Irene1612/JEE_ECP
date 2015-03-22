@@ -13,10 +13,10 @@ import controllers.AniadirTemaController;
 public class AniadirTemaView extends ViewBean {
 	
 	@ManagedProperty(value = "#{nombreTema}")
-	public String nombreTema;
+	private String nombreTema;
 	
 	@ManagedProperty(value = "#{preguntaTema}")
-	public String preguntaTema;
+	private String preguntaTema;
 
 	public AniadirTemaView() {
 	}

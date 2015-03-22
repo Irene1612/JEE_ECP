@@ -11,7 +11,7 @@ public class IntroducirIdentificadorView extends ViewBean {
 	private static final String CODIGO_AUTORIZACION = "666";
 	
 	@ManagedProperty(value = "#{codigoAutorizacion}")
-	public String codigoAutorizacion;
+	private String codigoAutorizacion;
 	
 	public IntroducirIdentificadorView() {
 	}
